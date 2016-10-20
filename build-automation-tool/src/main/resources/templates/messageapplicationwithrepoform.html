@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+    <title>Build Automation Tool</title>
+
+    <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+     <script>
+		$(document).ready(function(){
+			// binds form submission and fields to the validation engine
+			$("#messageapplicationwithId").validationEngine('attach');
+		});
+	</script>
+    
+</head>
+
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+ <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+ <!--/*/ <th:block th:include="fragments/sidebar :: sidebar"></th:block> /*/-->
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Apllication With Repository Details
+      </h1>
+
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+      <!-- Your Page Content Here -->
+	<div>
+        <form id="messageapplicationwithId" class="form-horizontal" th:object="${messageapplicationwithrepo}" th:action="@{/messageapplicationwithrepo}" method="post">
+            <input type="hidden" th:field="*{id}"/>            
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Name:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control validate[required] text-input" placeholder="Enter Apllication Name" th:field="*{name}"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Repository Name:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control validate[required] text-input" placeholder="Enter Apllication Repository Name" th:field="*{reponame}"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Repository Location:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control validate[required] text-input" placeholder="Enter Apllication Repository Location" th:field="*{repolocation}"/>
+                </div>
+            </div>
+            <div class="form-group">
+             	<label class="col-sm-2 control-label pull-right"><button type="submit" class="btn btn-success">Submit</button></label>
+             </div>
+        </form>
+    </div>
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+ <!--/*/ <th:block th:include="fragments/footer :: footer"></th:block> /*/-->
+ 
+</div>
+</body>
+</html>
