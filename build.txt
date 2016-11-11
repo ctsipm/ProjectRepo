@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<project name="project" default="run">
+       <target name="run" description="">
+              <property name="mqsicreatebarFile.path" value="C:\Program Files\IBM\IntegrationToolkit90"/>
+              <property name="ant.bars.basedir" value="E:\Test" />
+              <property name="application.name" value="I2364_ORACLEBEEU_BILLING_CVTXML"/>
+              <property name="barfileLocation" value="${ant.bars.basedir}\${application.name}.bar" />
+              <property name="workspaceLoc" value="E:\workspaces\iib" />
+              <property name="library.name" value="I2364_ORACLEBE_BILLING_DFDL" />
+
+              <antcall target="build" />
+       </target>
+       <target name="build">
+              <echo message="Building the Message Broker Project @ ${workspaceLoc}" />
+              <exec executable="${mqsicreatebarFile.path}\mqsicreatebar.exe" spawn="false">
+                     <arg value="-data" />
+                     <arg value="${workspaceLoc}" />
+                     <arg value="-b" />
+                     <arg value="${barfileLocation}" />
+                     <!-- List all the message flow projects -->
+                     <arg value="-a" />
+                     <arg value="${application.name}" />
+                     <arg value="-l" />
+                     <arg value="${library.name}" />
+                     <arg value="-cleanBuild"/>
+                     <!-- List all the files to be included in the archive -->
+                     <!--<arg value="-o" />
+            <arg value="TestProject\TestFlow.msgflow" />
+            <arg value="TestProject_MSET\TestMessageSet\messageSet.mset" />-->
+              </exec>
+       </target>
+</project>
